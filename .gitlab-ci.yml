@@ -1,0 +1,200 @@
+# This is the universal CI Configuration for iTech CloudPACS project
+
+variables:
+    SOURCE_FOLDER: "build"
+    YARN_ARGS: "build:production" # build-pages-job will use build:dev by default
+    YARN_ARGS_DEV: "build:dev"
+    PIPELINE_REPORT_FILENAME: "report.json" # must be the same filename as config.json in cloudpacs-deploy-scripts
+    TEST_REPORT_FILENAME: ".test/result.xml" # must be the same filename as config.json in cloudpacs-deploy-scripts
+    WINDOWS_RUNNER: "win"
+    FF_USE_FASTZIP: "true"
+    PUBLIC_URL: "/" # if project is deploy at /subdir, set PUBLIC_URL = "/subdir/"
+    CHROMATIC_PROJECT_TOKEN: "afb454666fc9"
+
+stages:          # List of stages for jobs, and their order of execution
+  - install
+  - test
+  - build
+  - deploy
+  - notify
+
+default:
+  before_script:
+    - git clone --branch cloud-pacs-v4 https://gitlab+deploy-token-1355694:Lz6rhGUQx3VmPYy26UNc@gitlab.com/ipacs-cloud/cloudpacs-deploy-scripts.git
+
+install-deps:
+  stage: install
+  tags:
+    - $WINDOWS_RUNNER
+  cache:
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - node_modules
+    policy: pull-push
+  rules:
+    - if: $CI_COMMIT_BRANCH  == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH  =~ /master\/(.*)/
+    - if: $CI_COMMIT_BRANCH  =~ /release\/(.*)/
+  script:
+    - echo "Installing dependencies..."
+    - ./cloudpacs-deploy-scripts/win/install.ps1
+    - if ($LastExitCode -ne 0) { exit 1 }
+
+build-job:       # This job runs in the build stage
+  stage: build
+  tags:
+    - $WINDOWS_RUNNER
+  cache:
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - node_modules
+    policy: pull
+  artifacts:
+    name: $CI_COMMIT_REF_NAME
+    paths:
+      - build
+      - $PIPELINE_REPORT_FILENAME
+    expire_in: 1 week
+  rules:
+    - if: $CI_COMMIT_BRANCH  =~ /release\/(.*)/
+  script:
+    - echo "Starting build..."
+    - ./cloudpacs-deploy-scripts/win/install.ps1
+    - yarn lint
+    - ./cloudpacs-deploy-scripts/win/build.ps1 $YARN_ARGS $PUBLIC_URL
+    - if ($LastExitCode -ne 0) { exit 1 }
+
+build-pages-job:       # Build with gitlab pages PUBLIC_URL for gitlab pages
+  stage: build
+  tags:
+    - $WINDOWS_RUNNER
+  cache:
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - node_modules
+    policy: pull
+  artifacts:
+    name: $CI_COMMIT_REF_NAME
+    paths:
+      - build
+      - $PIPELINE_REPORT_FILENAME
+    expire_in: 1 week
+  rules:
+    - if: $CI_COMMIT_BRANCH  == $CI_DEFAULT_BRANCH
+  script:
+    - echo "Starting build..."
+    - $VARIANT = ./cloudpacs-deploy-scripts/win/get_project_variant.ps1
+    - $GL_PAGES_PUBLIC_URL="/$CI_PROJECT_NAME/"
+    - ./cloudpacs-deploy-scripts/win/install.ps1
+    - yarn lint
+    - ./cloudpacs-deploy-scripts/win/build.ps1 $YARN_ARGS_DEV $GL_PAGES_PUBLIC_URL
+    - if ($LastExitCode -ne 0) { exit 1 }
+
+unit-test-job:   # This job runs in the test stage.
+  stage: test    # It only starts when the job in the build stage completes successfully.
+  tags:
+    - $WINDOWS_RUNNER
+  cache:
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - node_modules
+    policy: pull
+  allow_failure: true
+  artifacts:
+    when: always
+    expire_in: 1 week
+    paths:
+      - $PIPELINE_REPORT_FILENAME
+      - $TEST_REPORT_FILENAME
+    reports:
+      junit: $TEST_REPORT_FILENAME
+  rules:
+    - if: $CI_COMMIT_BRANCH  =~ /release\/(.*)/ # except release branch
+      when: never
+    - if: $CI_COMMIT_BRANCH  =~ /no-test\/(.*)/
+      when: never
+    - if: $CI_COMMIT_BRANCH
+  script:
+    - echo "Running unit tests..."
+    - ./cloudpacs-deploy-scripts/win/test.ps1
+    - if ($LastExitCode -ne 0) { exit 1 }
+
+# chromatic_publish:
+#   stage: test
+#   tags:
+#     - $WINDOWS_RUNNER
+#   cache:
+#     key:
+#       files:
+#         - yarn.lock
+#     paths:
+#       - node_modules
+#     policy: pull
+#   rules:
+#     - if: $CI_COMMIT_BRANCH =~ /release\/(.*)/ 
+#       when: never # except release branch
+#     - if: $CI_COMMIT_BRANCH  =~ /no-test\/(.*)/
+#       when: never
+#     - if: $CI_COMMIT_BRANCH
+#   allow_failure: true
+#   script:
+#     - yarn install
+#     - yarn chromatic --project-token=$CHROMATIC_PROJECT_TOKEN --exit-once-uploaded
+
+pages:      # This job prepare the gitlab pages
+  stage: deploy 
+  tags:
+    - $WINDOWS_RUNNER
+  artifacts:
+    when: always
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH  == $CI_DEFAULT_BRANCH
+  dependencies: [build-pages-job]
+  script:
+    - echo "Deploying to GitLab pages..."
+    - ./cloudpacs-deploy-scripts/win/deploy_gitlab_pages.ps1
+    - if ($LastExitCode -ne 0) { exit 1 }
+
+deploy-job:      # This job runs in the deploy stage.
+  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+  tags:
+    - $WINDOWS_RUNNER
+  dependencies: [build-job]
+  artifacts:
+    when: always
+    paths:
+      - $PIPELINE_REPORT_FILENAME
+    expire_in: 1 week
+  rules:
+    - if: $CI_COMMIT_BRANCH  =~ /release\/(.*)/
+  script:
+    - echo "Deploying application..."
+    - $folder_name = . ./cloudpacs-deploy-scripts/win/get_project_dir.ps1
+    - $project_version = . ./cloudpacs-deploy-scripts/win/get_project_version.ps1
+    - $FILENAME_SUFFIX = If ($CI_COMMIT_BRANCH -contains "test") {"-test"} Else {""}
+    - $filename = $project_version + $FILENAME_SUFFIX + '.tar'
+    - ./cloudpacs-deploy-scripts/win/deploy.ps1 $filename $folder_name
+    - if ($LastExitCode -ne 0) { exit 1 }
+
+notify-job:
+  stage: notify
+  tags:
+    - $WINDOWS_RUNNER
+  dependencies: [deploy-job]
+  rules:
+    - if: $CI_COMMIT_BRANCH  =~ /release\/(.*)/
+  script:
+    - echo "Notifying to Slack..."
+    - ./cloudpacs-deploy-scripts/win/notify.ps1
+    - if ($LastExitCode -ne 0) { exit 1 }
+

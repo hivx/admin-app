@@ -1,0 +1,957 @@
+<h1>&nbsp;</h1>
+<h1><strong>Giới thiệu</strong></h1>
+<p>&nbsp;</p>
+<figure class="table">
+  <table style="background-color:rgb(255, 255, 255);">
+    <tbody>
+      <tr>
+        <td style="border-bottom:0.5px solid rgb(0, 0, 0);border-left:0.5px solid rgb(0, 0, 0);border-right:0.5px solid rgb(0, 0, 0);border-top:0.5px solid rgb(0, 0, 0);padding:5pt;text-align:justify;"><strong>ID and Name</strong></td>
+        <td style="border-bottom:0.5px solid rgb(0, 0, 0);border-left:0.5px solid rgb(0, 0, 0);border-right:0.5px solid rgb(0, 0, 0);border-top:0.5px solid rgb(0, 0, 0);padding:5pt;text-align:justify;">Orderlist - Xem danh sách ca chụp</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:0.5px solid rgb(0, 0, 0);border-left:0.5px solid rgb(0, 0, 0);border-right:0.5px solid rgb(0, 0, 0);border-top:0.5px solid rgb(0, 0, 0);padding:5pt;text-align:justify;"><strong>Description</strong></td>
+        <td style="border-bottom:0.5px solid rgb(0, 0, 0);border-left:0.5px solid rgb(0, 0, 0);border-right:0.5px solid rgb(0, 0, 0);border-top:0.5px solid rgb(0, 0, 0);padding:5pt;text-align:justify;">
+          <p style="text-align:justify;">Hiển thị danh sách Ca Chụp chờ Chẩn đoán</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:0.5px solid rgb(0, 0, 0);border-left:0.5px solid rgb(0, 0, 0);border-right:0.5px solid rgb(0, 0, 0);border-top:0.5px solid rgb(0, 0, 0);padding:5pt;text-align:justify;"><strong>Actor</strong></td>
+        <td style="border-bottom:0.5px solid rgb(0, 0, 0);border-left:0.5px solid rgb(0, 0, 0);border-right:0.5px solid rgb(0, 0, 0);border-top:0.5px solid rgb(0, 0, 0);padding:5pt;text-align:justify;">
+          <p>- Người dùng đươc phân quyền xem module Đọc ca</p>
+          <p>- Quản trị hệ thống</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:0.5px solid rgb(0, 0, 0);border-left:0.5px solid rgb(0, 0, 0);border-right:0.5px solid rgb(0, 0, 0);border-top:0.5px solid rgb(0, 0, 0);padding:5pt;text-align:justify;"><strong>Relationship</strong></td>
+        <td style="border-bottom:0.5px solid rgb(0, 0, 0);border-left:0.5px solid rgb(0, 0, 0);border-right:0.5px solid rgb(0, 0, 0);border-top:0.5px solid rgb(0, 0, 0);padding:5pt;text-align:justify;">
+          <p style="text-align:justify;">&nbsp;</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:0.5px solid rgb(0, 0, 0);border-left:0.5px solid rgb(0, 0, 0);border-right:0.5px solid rgb(0, 0, 0);border-top:0.5px solid rgb(0, 0, 0);padding:5pt;text-align:justify;"><strong>Pre-conditions</strong></td>
+        <td style="border-bottom:0.5px solid rgb(0, 0, 0);border-left:0.5px solid rgb(0, 0, 0);border-right:0.5px solid rgb(0, 0, 0);border-top:0.5px solid rgb(0, 0, 0);padding:5pt;text-align:justify;">
+          <p style="text-align:justify;">- Người dùng đã có tài khoản trong hệ thống</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:0.5px solid rgb(0, 0, 0);border-left:0.5px solid rgb(0, 0, 0);border-right:0.5px solid rgb(0, 0, 0);border-top:0.5px solid rgb(0, 0, 0);padding:5pt;text-align:justify;"><strong>Post-conditions</strong></td>
+        <td style="border-bottom:0.5px solid rgb(0, 0, 0);border-left:0.5px solid rgb(0, 0, 0);border-right:0.5px solid rgb(0, 0, 0);border-top:0.5px solid rgb(0, 0, 0);padding:5pt;text-align:justify;">&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h1><strong>Quy trình</strong></h1>
+<ul>
+  <li>Người dùng đăng nhập vào hệ thống PACS qua trình duyệt Web</li>
+  <li>Hệ thống tự động nhận diện người dùng thuộc bệnh viện nào qua domain đăng nhập trên trình duyệt</li>
+  <li>Người dùng chọn Đọc ảnh</li>
+</ul>
+<h1><strong>Luồng quy trình&nbsp;</strong></h1>
+<h2><strong>Main Flow - Xem danh sách Ca chụp</strong></h2>
+<figure class="table">
+  <table style="background-color:rgb(255, 255, 255);border-bottom:0.5px solid rgb(0, 0, 0);border-left:0.5px solid rgb(0, 0, 0);border-right:0.5px solid rgb(0, 0, 0);border-top:0.5px solid rgb(0, 0, 0);">
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;width:30px;">
+          <p style="text-align:center;"><strong>Step</strong></p>
+        </td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;">
+          <p style="text-align:center;"><strong>Description</strong></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;width:30px;">
+          <p style="text-align:center;">1</p>
+        </td>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;"><u>Người dùng</u> đăng nhập vào trang web (Ví dụ: theo đường dẫn <mark class="marker-yellow">tenbv.ipacs.com.vn</mark>)</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;width:30px;">
+          <p style="text-align:center;">2</p>
+        </td>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;"><u>Hệ thống</u> hiển thị màn hình giao diện truy cập vào web</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;width:30px;">
+          <p style="text-align:center;">3</p>
+        </td>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;"><u>Người dùng</u>&nbsp;click vào Đọc Ảnh trên menu ở màn giao diện vừa truy cập vào hệ thống</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);text-align:center;">4</td>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;"><u>Hệ thống</u> hiển thị danh sách các máy chụp bên sidebar cho bác sĩ lựa chọn</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">5</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;"><u>Hệ thống</u> hiển thị danh sách ca chụp trong ngày của tất cả các máy chụp trong màn hình chính. Danh sách được sắp xếp theo trạng thái Chưa đọc được ưu tiên</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">6</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;"><u>Người dùng</u> chọn 1 ca chụp trong danh sách</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">7</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;"><u>Hệ thống</u> hiển thị màn hình chi tiết ca chụp, dịch vụ chụp và kết quả dịch vụ đó cùng với lịch sử chụp của bệnh nhân</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h1><strong>Special Requirements</strong></h1>
+<h2>Yêu cầu nghiệp vụ</h2>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;width:30px;">
+          <p style="text-align:center;"><strong>STT</strong></p>
+        </td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;">
+          <p style="text-align:center;"><strong>Yêu cầu</strong></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;width:30px;">
+          <p style="text-align:center;">1</p>
+        </td>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;">Chỉ hiển thị danh sách máy chụp người dùng được phân quyền</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;width:30px;">
+          <p style="text-align:center;">2</p>
+        </td>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;">Các nhóm máy chụp được sắp xếp theo tứ tự ưu tiên được cấu hình sẵn trong hệ thống</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;width:30px;">
+          <p style="text-align:center;">3</p>
+        </td>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;">Danh sách ca chụp đều phải thuộc các máy chụp người dùng được phân quyền</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);text-align:center;">4</td>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);padding:0.5rem 0.75rem;">Tìm kiếm mặc định theo Tên bệnh nhân</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">5</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Tìm kiếm Nâng cao theo Ngày chỉ định, Mã chỉ định, Khoa chỉ định, Mã bệnh nhân, Tên bệnh nhân, Trạng thái đọc ca, Bác sĩ chỉ định, Bác sĩ duyệt ca, Ngày duyệt ca</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">6</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Người dùng có thể cấu hình các trường được hiển thị trong bảng danh sách, thứ tự của từng trường, số lượng ca hiển thị tối đa, thời gian tự động refresh lại bảng, tự động nhận ca chụp, tự động bật màn hình xem ảnh</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">7</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p>Người dùng chọn click vào một ca chụp sẽ hiển thị chi tiết ca chụp ở màn hình chi tiết bên dưới.</p>
+          <p>Màn hình chi tiết bao gồm: Tên bệnh nhân, Mã bệnh nhân, Chẩn đoán lâm sàng, Ngày chỉ định, Khoa chỉ định, Dịch vụ chụp (chọn được nếu có nhiều hơn 1 chỉ định), Kết quả chụp của dịch vụ (nếu đã duyệt), Bác sĩ duyệt, Thời gian duyệt, Tài khoản ký số, Lịch sử chụp</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">8</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Danh sách ca chụp được sắp xếp mặc định theo thứ tự Ca Chưa Đọc được ưu tiên</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">9</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Trong màn hình chi tiết, hiển thị nút xem ảnh DICOM trong trường hợp ca đã có ảnh</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">10</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Trong màn hình chi tiết, hiển thị nút in nhanh kết quả nếu đã có</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">11</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Trong màn hình chi tiết, hiển thị nút in ảnh DICOM theo layout được cấu hình sẵn</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">12</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Người dùng có thể thay đổi thông tin ca chụp trong trường hợp được phân quyền. Thông tin của ca chụp chỉ có thể thay đổi nếu thông tin chỉ định không phải gửi từ HIIS</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">13</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Trong lịch sử chụp, cho phép chọn 2 ca chụp cũ để so sánh kết quả</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">14</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Danh sách ca chụp mặc định ban đầu là tất cả ca chụp trong ngày</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h2>Màn hình chính</h2>
+<h3>Màn hình danh sách ca chụp</h3>
+<figure class="image"><img src="/dianogsis/docca_danhsach.png"></figure>
+<h3>Màn hình chức năng tìm kiếm</h3>
+<figure class="image"><img src="/dianogsis/docca_danhsach_timkiem.png"></figure>
+<h1><strong>Supplementary Information</strong></h1>
+<h2><i><u>Hiển thị danh sách máy chụp (có điều kiện tìm kiếm)</u></i></h2>
+<p>&nbsp;</p>
+<figure class="table">
+  <table style="background-color:rgb(255, 255, 255);border-bottom:none initial;border-left:none initial;border-right:none initial;border-top:none initial;">
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;"><strong>URL</strong></td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;">POST /secured/ws/rest/v1/async/hospital/{hospitalID}/search/modality</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;"><strong>Mô tả</strong></td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;">
+          <ul>
+            <li>Tìm kiếm danh sách theo điều kiện tìm kiếm</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;"><strong>Parameters</strong></td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;">
+          <ul>
+            <li>hospitalID: int - mã bệnh viện</li>
+            <li>ModalityFilter(ids)</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;"><strong>Response</strong></td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;">List&lt;ModalityDTOGet &gt;</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h4>ModalityDTOGet</h4>
+<figure class="table">
+  <table style="background-color:rgb(255, 255, 255);border-bottom:none initial;border-left:none initial;border-right:none initial;border-top:none initial;">
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>STT</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>Tên trường</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>Tên biến API</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;"><strong>Kiểu dữ liệu</strong></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">1</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">ID</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">id</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">&nbsp;Long</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">2</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Mã máy&nbsp;</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">code</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">3</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Tên máy</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">name</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">4</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Nhóm máy</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">group</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">ModalityGroupDTOGet</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">6</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Loại máy</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">modalityType</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">7</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Loại máy khác</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">otherModalityTypes</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">List &lt;String&gt;</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">8</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Phòng chụp</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">room</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">ModalityRoomDTOGet</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">9</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Institution Name</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">institutionName</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">10</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Manufacturer Model Name</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">manufacturerModelName</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">11</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Station Name</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">stationName</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">12</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">AE Title</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">aeTitle</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">13</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">IP Address</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">ipAddress</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">14</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Hỗ trợ xuất ảnh DICOM</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">supportDicom</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Boolean</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">15</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Cho phép chọn KTV chụp</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">hasOperators</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Boolean</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">16</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Cho phép chọn KTV ghi KQ</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">hasTranscribers</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Boolean</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">17</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Bắt buộc chờ ảnh DICOM</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">requireDicom</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Boolean</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">18</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Định mức chụp</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">capability</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Integer</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">19</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Hoạt động</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">enabled</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Boolean</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">
+          <p style="text-align:center;">20</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">Dịch vụ chụp</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">procedureIDs</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;padding:5pt;">List &lt;Long&gt;</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h2><i><u>Hiển thị danh sách ca chụp (có điều kiện tìm kiếm)</u></i></h2>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;"><strong>URL</strong></td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;">POST /secured/ws/rest/v1/async/hospital/{hospitalID}/search/order</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;"><strong>Mô tả</strong></td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;">
+          <ul>
+            <li>Tìm kiếm danh sách theo điều kiện tìm kiếm</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;"><strong>Parameters</strong></td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;">
+          <ul>
+            <li>hospitalID: int - mã bệnh viện</li>
+            <li>OrderFilter(modalityIDs, requestedTime, accessionNumber, requestedDepartmentID, referringPhysicianID, diagnosisStatus, pid, patientName, finalApproverID, finalApprovedTime)</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;"><strong>Response</strong></td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;">List&lt;OrderDTOGet &gt;</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h4>OrderDTOGet</h4>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>STT</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>Tên trường</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>Tên biến API</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;"><strong>Kiểu dữ liệu</strong></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">1</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">ID</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">id</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">&nbsp;Long</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">2</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Bệnh nhân</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">patient</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">PatientDTOGet</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">3</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Khoa chỉ định</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">requestedDepartment</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">DepartmentDTOGet</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">4</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Bác sĩ chỉ định</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">referringPhysician</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">CloudUserDtoGet</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">6</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Mã nhập viện</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">encounterNumber</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">7</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Mã ca chụp</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">accessionNumber</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">8</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Chẩn đoán lâm sàng</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">diagnosis</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">9</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Cấp cứu</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">urgent</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Boolean</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">10</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Chỉ dẫn</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">instructions</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">11</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Mô tả</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">description</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">12</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Loại ca</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">modalityType</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">13</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Máy chụp</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">modality</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">ModalityDTOGet</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">14</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Ca chụp</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">study</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">StudyDTOGet</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">15</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Thời gian chỉ định</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">requestedTime</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p>String</p>
+          <p>Định dạng: YYYYMMDD HH:MM:SS</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">16</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Dịch vụ chụp</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">orderProcedures</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">List&lt;OrderProcedureDTOGet&gt;</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">17</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Cách tạo</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">creationType</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p>String</p>
+          <p>HIS: gửi từ HIS, RIS: tạo từ RIS, TAG: tạo từ DICOM tags</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">18</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Người khoa ca</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">lockUser</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">CloudUserDtoGet</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">19</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Trạng thái đọc ca</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">reportStatus</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p>String</p>
+          <p>NOT_STARTED: Chưa đọc</p>
+          <p>PENDING_APPROVAL: Chờ duyệt</p>
+          <p>APPROVED: Đã duyệt</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">20</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Số BHYT</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">insuranceNumber</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">21</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Ngày có hiệu lực</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">insuranceIssuedDate</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p>String</p>
+          <p>Định dạng: YYYYMMDD HH:MM:SS</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">22</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Ngày hết hạn</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">insuranceExpiredDate</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p>String</p>
+          <p>Định dạng: YYYYMMDD HH:MM:SS</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">23</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Sử dụng BHYT</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">insuranceApplied</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Boolean</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h3>PatientDTOGet</h3>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>STT</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>Tên trường</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>Tên biến API</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;"><strong>Kiểu dữ liệu</strong></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">1</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">ID</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">id</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">&nbsp;Long</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">2</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Mã bệnh nhân</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">pid</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">3</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Tên bệnh nhân</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">fullname</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">4</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Giới tính</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">gender</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">5</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Ngày sinh</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">birthDate</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">6</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Số điện thoại</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">phone</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">7</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Email</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">email</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">8</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Địa chỉ</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">address</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">9</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Cách tạo</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">creationType</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h3><strong>OrderRequestDTOGet</strong></h3>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>STT</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>Tên trường</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>Tên biến API</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;"><strong>Kiểu dữ liệu</strong></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">1</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">ID</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">id</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">&nbsp;Long</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">2</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">orderID</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">orderID</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Long</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">3</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Mã ICD</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">icdCode</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">4</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Mã yêu cầu</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">requestedNumber</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">5</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Ngày yêu cầu</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">requestedTime</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p>String</p>
+          <p>Định dạng: YYYYMMDD HH:MM:SS</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">6</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Dịch vụ chụp</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">procedure</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">ProcedureDTOGet</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">7</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Bác sĩ duyệt</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">finalApprover</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">CloudUserDtoGet</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">8</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">ID kết quả</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">finalReportID</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Long</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">9</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Thời gian duyệt</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">finalApprovedTime</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p>String</p>
+          <p>Định dạng: YYYYMMDD HH:MM:SS</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">10</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">ID của file ký số</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">certificatedReportID</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Long</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h2><i><u>Hiển thị kết quả chẩn đoán theo ID</u></i></h2>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);vertical-align:top;"><strong>URL</strong></td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;vertical-align:top;">GET /secured/ws/rest/v1/async/hospital/{hospitalID}/radiologyReport/{id}</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);vertical-align:top;"><strong>Mô tả</strong></td>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);vertical-align:top;">
+          <ul>
+            <li>Tìm kiếm kết quả chẩn đoán theo ID</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);vertical-align:top;"><strong>Parameters</strong></td>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);vertical-align:top;">
+          <ul>
+            <li>hospitalID: int - mã bệnh viện</li>
+            <li>id: int - ID của kết quả</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);vertical-align:top;"><strong>Response</strong></td>
+        <td style="border-bottom:1px solid rgb(0, 0, 0);border-left:1px solid rgb(0, 0, 0);border-right:1px solid rgb(0, 0, 0);border-top:1px solid rgb(0, 0, 0);vertical-align:top;">RadiologyReportDTOGet</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h3>RadiologyReportDTOGet</h3>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>STT</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>Tên trường</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;"><strong>Tên biến API</strong></p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;"><strong>Kiểu dữ liệu</strong></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">1</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">ID</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">id</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">&nbsp;Long</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">2</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">ID của yêu cầu chụp</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">orderProcedureID</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Long</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">3</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">KTV nhập kết quả</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">transcriber</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">CloudUserDtoGet</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">4</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Bác sĩ đọc</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">reporter</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">CloudUserDtoGet</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p style="text-align:center;">5</p>
+        </td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Bác sĩ duyệt&nbsp;</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">approver</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">CloudUserDtoGet</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">6</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Thời gian đọc</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">reportedTime</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p>String</p>
+          <p>Định dạng: YYYYMMDD HH:MM:SS</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">7</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Thời gian duyệt</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">approvedTime</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">
+          <p>String</p>
+          <p>Định dạng: YYYYMMDD HH:MM:SS</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">8</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Nội&nbsp;dung&nbsp;</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">findings</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">9</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Kết luận</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">impression</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;text-align:center;">10</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">Ghi chú</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">comments</td>
+        <td style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;border-top:1px solid;">String</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h1><strong>Related Documents</strong></h1>
+<figure class="table">
+  <table style="background-color:rgb(255, 255, 255);">
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;"><strong>Tên tài liệu</strong></td>
+        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;"><strong>Đường dẫn</strong></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;">Mockup</td>
+        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;"><a href="https://www.figma.com/file/u2IWyC5rFCoShvgJ7ixv4F/Pacs-cloud-V4-team-library?node-id=431%3A343&amp;t=TgKhyqfliNKwAlSe-0">https://www.figma.com/file/u2IWyC5rFCoShvgJ7ixv4F/Pacs-cloud-V4-team-library?node-id=431%3A343&amp;t=TgKhyqfliNKwAlSe-0</a></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;">GUI Guides&nbsp;</td>
+        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;">&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
+<p>Comments</p>

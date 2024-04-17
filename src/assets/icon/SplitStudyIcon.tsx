@@ -1,0 +1,17 @@
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
+
+const ItechSplitStudyIcon = (props: SvgIconProps) => {
+  return (
+    <SvgIcon color="inherit" viewBox="0 0 24 24" {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M21 21V15H22H24V21C24 22.6569 22.6569 24 21 24H13H11H3C1.34314 24 0 22.6569 0 21V15H2L3 15L3 21H11L11 3L3 3L3 9L2 9H0V3C0 1.34314 1.34315 0 3 0H11H13H21C22.6569 0 24 1.34315 24 3V9H22H21V3L13 3L13 21H21ZM4.77765 13L7.13052 15.3529L5.71631 16.7671L1 12.0508L2.41421 10.6366L2.41861 10.641L5.73242 7.32715L7.14664 8.74136L4.888 11H10V13H4.77765ZM21.6152 10.6409L18.3804 7.32715L16.9999 8.74136L19.2047 11H14V13H19.3124L17.0156 15.3529L18.3961 16.7671L23 12.0508L21.6195 10.6366L21.6152 10.6409Z"
+      />
+    </SvgIcon>
+  );
+};
+
+ItechSplitStudyIcon.displayName = 'ItechSplitStudy';
+
+export default ItechSplitStudyIcon;

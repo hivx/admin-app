@@ -1,0 +1,17 @@
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
+
+const ItechMergeStudyIcon = (props: SvgIconProps) => {
+  return (
+    <SvgIcon color="inherit" viewBox="0 0 24 24" {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M21 3H15V2V0H21C22.6569 0 24 1.34315 24 3V9H22H21V3ZM22 15H24V21C24 22.6569 22.6569 24 21 24H15V22V21H21V15H22ZM9 22V24H3C1.34315 24 0 22.6569 0 21V15H2H3V21H9V22ZM3 9V3H9V2V0H3C1.34315 0 0 1.34315 0 3V9H2H3ZM8.61524 10.6409L5.38044 7.32715L3.99993 8.74136L6.20474 11H0V13H6.31238L4.01558 15.3529L5.39609 16.7671L10 12.0508L8.61949 10.6366L8.61524 10.6409ZM17.7776 13L20.1305 15.3529L18.7163 16.7671L14 12.0508L15.4142 10.6366L15.4186 10.641L18.7324 7.32715L20.1466 8.74136L17.888 11H24V13H17.7776Z"
+      />
+    </SvgIcon>
+  );
+};
+
+ItechMergeStudyIcon.displayName = 'ItechMergeStudy';
+
+export default ItechMergeStudyIcon;
