@@ -1,20 +1,16 @@
-import { AppProvider } from '@/providers/app';
-import { AppRoutes } from '@/routes';
+// import { AppProvider } from '@/providers/app';
+// import { AppRoutes } from '@/routes';
 
-import { store } from './stores/redux';
-import { initializeDayjs } from './utils/initializeDayjs';
+// import { store } from './stores/redux';
+// import { initializeDayjs } from './utils/initializeDayjs';
 
-/**
- * Set timezone
- */
-initializeDayjs();
+// /**
+//  * Set timezone
+//  */
+// initializeDayjs();
 
 function App() {
-  return (
-    <AppProvider store={store}>
-      <AppRoutes />
-    </AppProvider>
-  );
+  return <>xin chao</>;
 }
 
 export default App;

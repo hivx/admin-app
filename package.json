@@ -2,9 +2,10 @@
   "name": "cloudpacs-web-v4",
   "version": "1.2.82",
   "variant": "itech-core",
+  
   "scripts": {
     "dev": "vite",
-    "start": "yarn install && npm-run-all --parallel version translate dev",
+    "start": "yarn install && npm-run-all --parallel version dev",
     "build:dev": "yarn prebuild && tsc && vite build --mode=development",
     "build:production": "yarn prebuild && tsc && vite build --mode=production",
     "serve": "vite preview",
@@ -13,7 +14,6 @@
     "lint": "yarn lint:format && yarn lint:fix ",
     "check-types": "tsc --project tsconfig.json --pretty --noEmit",
     "validate": "npm-run-all --parallel check-types lint:fix",
-    "translate": "yarn typesafe-i18n",
     "prepare": "husky install",
     "test": "vitest run",
     "storybook": "start-storybook -p 6006",
