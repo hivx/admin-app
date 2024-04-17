@@ -82,7 +82,7 @@ export default defineConfig(async ({ mode }) => {
       entries: ['msw'],
     },
     server: {
-      port: 3331,
+      port: 3000,
       open: false,
       strictPort: true,
       host: true,
